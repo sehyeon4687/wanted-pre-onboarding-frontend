@@ -104,8 +104,6 @@ const Todo = () => {
     .catch(err => console.log(err))
   }
 
-  console.log(editData)
-
   return (
     <TodoStyle>
       <h1>TODO LIST</h1>
