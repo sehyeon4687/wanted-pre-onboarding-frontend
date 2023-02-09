@@ -104,13 +104,21 @@ const Todo = () => {
     .catch(err => console.log(err))
   }
 
+  console.log(editData)
+
   return (
     <TodoStyle>
       <h1>TODO LIST</h1>
       {data.map(el => {
         return (
           <li key={el.id}>
-              <input type="checkbox" defaultChecked={el.isCompleted ? true : false} onClick={() => handleCheckboxButton(el)}/>
+              <input type="checkbox" defaultChecked={el.isCompleted ? true : false} onClick={() => {
+                handleCheckboxButton(el)
+                setEditData({
+                  todo : editData.todo,
+                  isCompleted : !el.isCompleted
+                })
+              }}/>
               {el.id === edit ?
               <>
               <input className='modify' data-testid="modify-input" onChange={e => setEditData({
