@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Signup from './Page/Signup';
 import Signin from './Page/Signin';
-import Main from './Page/Main';
 import Todo from './Page/Todo';
 
 

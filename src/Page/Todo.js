@@ -12,9 +12,15 @@ const Todo = () => {
     todo: "",
     isCompleted: false,
   })
-  const [checked, setChecked] = useState(false)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
+
+    if(!localStorage.getItem("access_token")){
+      navigate('/signin')
+    }
+
     fetch("https://pre-onboarding-selection-task.shop/todos",{
       method : "GET",
       headers : {
@@ -100,13 +106,14 @@ const Todo = () => {
 
   return (
     <TodoStyle>
+      <h1>TODO LIST</h1>
       {data.map(el => {
         return (
           <li key={el.id}>
               <input type="checkbox" defaultChecked={el.isCompleted ? true : false} onClick={() => handleCheckboxButton(el)}/>
               {el.id === edit ?
               <>
-              <input data-testid="modify-input" onChange={e => setEditData({
+              <input className='modify' data-testid="modify-input" onChange={e => setEditData({
                 todo: e.target.value,
                 isCompleted: el.isCompleted,
               })} value={editData.todo}/>
@@ -130,9 +137,9 @@ const Todo = () => {
         )
       })}
       <br/>
-      <input data-testid="new-todo-input" onChange={e => setContent(e.target.value)} value={content} />
+      <input className='new_todo' data-testid="new-todo-input" onChange={e => setContent(e.target.value)} value={content} />
       <br/>
-      <button data-testid="new-todo-add-button" onClick={() => {
+      <button className='add_todo' data-testid="new-todo-add-button" onClick={() => {
         handleSubmitButton()
         setContent("")
       }}>추가</button>
@@ -147,5 +154,39 @@ const TodoStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10vh;
+  list-style: none;
+  border: 8px solid black;
+  margin: 10vh 8vw;
+  border-radius: 30px;
+
+  li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  span{
+    width: 30vw;
+    margin: 0 15px;
+  }
+
+  button{
+    margin: 0 5px;
+  }
+
+  .modify{
+    width: 30vw;
+    margin: 0 15px;
+  }
+
+  .new_todo{
+    width: 30vw;
+  }
+
+  .add_todo{
+    width: 15vw;
+    margin-bottom: 20px;
+  }
+
 `
