@@ -1,3 +1,17 @@
-프로젝트의 실행 방법
-데모 영상
-데모 영상은 배포 링크로 대체 가능하며, 배포가 되었고 배포된 사이트에서 기능이 모두 동작하면 가산점이 부여됩니다.
+
+
+# 프로젝트의 실행 방법
+
+    git clone https://github.com/sehyeon4687/wanted-pre-onboarding-frontend.git
+    cd wanted-pre-onboarding-frontend
+    npm i
+    npm start
+
+# 배포 링크
+회원가입 : <https://wanted-pre-onboarding-frontend-mocha-delta.vercel.app/signup>
+
+로그인 : <https://wanted-pre-onboarding-frontend-mocha-delta.vercel.app/signin>
+
+todo : <https://wanted-pre-onboarding-frontend-mocha-delta.vercel.app/todo>
+
+***
